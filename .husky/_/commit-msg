@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/h"
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+if echo "$COMMIT_MSG" | grep -qE "^(Add|Modify|Setting|Doc|Style|Fix)"; then
+  echo "커밋 메시지 키워드 확인 통과!"
+  exit 0
+else
+  echo "커밋 메시지는 다음 중 하나로 시작해야 합니다: Add, Modify, Setting, Doc, Style, Fix"
+  exit 1
+fi
