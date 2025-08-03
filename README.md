@@ -1,6 +1,7 @@
 # Blog Project
 
 - 블로그 프로젝트 입니다.
+- 노션을 통해 글을 작성하고 보여줍니다.
 
 ---
 
@@ -14,7 +15,7 @@
 
 ### Tech Skill
 
--
+- Next.js App Router, Typescript, TailwindCSS, ...
 
 ---
 
