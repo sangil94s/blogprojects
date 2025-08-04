@@ -4,6 +4,7 @@ import './globals.css';
 import ReactQueryProvider from '@/components/util/ReactQuery';
 import Footers from '@/components/Layout/Footer';
 import Headers from '@/components/Layout/Header';
+import Top from '@/components/Layout/Top';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Headers />
         <ReactQueryProvider>{children}</ReactQueryProvider>
+        <Top />
         <Footers />
       </body>
     </html>
