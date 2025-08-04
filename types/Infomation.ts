@@ -1,5 +1,10 @@
 // 타입 정보를 여기에
 
-interface ExampleType {
-    id: any
+export interface BlogAllPostType {
+  postId: string;
+  PostTitle: string;
+  Category: string[];
+  Skills: string[];
+  CreateDate: string;
+  SmallDescription: string;
 }
