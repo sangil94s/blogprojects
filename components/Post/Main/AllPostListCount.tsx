@@ -5,7 +5,9 @@ interface CountType {
 export default async function AllPostListCount({ count }: CountType) {
   return (
     <>
-      <h1 className="py-4 text-center text-2xl font-bold">카테고리의 포스트 수 : {count}</h1>
+      {count >= 1 && (
+        <h1 className="py-4 text-center text-2xl font-bold">카테고리의 포스트 수 : {count}</h1>
+      )}
     </>
   );
 }
