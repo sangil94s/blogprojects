@@ -1,3 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+
 import { notion } from './Notion';
 import { BlogAllPostType } from '@/types/Infomation';
 
