@@ -6,7 +6,7 @@ export default async function Home() {
   const posts = await getAllPosts();
 
   return (
-    <div className="m-auto my-2 min-h-screen w-11/12 rounded-lg bg-white">
+    <div className="m-auto my-4 min-h-screen w-11/12 rounded-lg bg-white">
       <AllPostListCount count={posts?.length} />
       <PostList posts={posts} />
     </div>

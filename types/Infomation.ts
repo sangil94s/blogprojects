@@ -1,7 +1,7 @@
 // 타입 정보를 여기에
 
 export interface BlogAllPostType {
-  postId: string;
+  postId: number;
   PostTitle: string;
   Category: string[];
   Skills: string[];
