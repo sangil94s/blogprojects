@@ -1,7 +1,6 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
-
 import { notion } from './Notion';
 import { BlogAllPostType } from '@/types/Infomation';
+import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export async function getAllPosts(): Promise<BlogAllPostType[]> {
   const res = await notion.databases.query({
@@ -14,12 +13,34 @@ export async function getAllPosts(): Promise<BlogAllPostType[]> {
     ],
   });
 
-  return res.results.map((page: any) => ({
-    postId: page.properties.postId.number,
-    PostTitle: page.properties.PostTitle.title[0]?.plain_text || '제목 없음',
-    Category: page.properties.Category.multi_select?.map((categorys: any) => categorys.name) || [],
-    Skills: page.properties.Skill.multi_select?.map((techskills: any) => techskills.name) || [],
-    CreateDate: page.properties.CreateDate.date?.start || '',
-    SmallDescription: page.properties.SmallDescription.rich_text[0]?.plain_text || '',
-  }));
+  return res.results.map(page => {
+    const typedPage = page as PageObjectResponse;
+
+    return {
+      postId:
+        typedPage.properties.postId?.type === 'number'
+          ? (typedPage.properties.postId.number ?? 0)
+          : 0,
+      PostTitle:
+        typedPage.properties.PostTitle?.type === 'title'
+          ? (typedPage.properties.PostTitle.title[0]?.plain_text ?? '제목 없음')
+          : '제목 없음',
+      Category:
+        typedPage.properties.Category?.type === 'multi_select'
+          ? typedPage.properties.Category.multi_select.map(item => item.name)
+          : [],
+      Skills:
+        typedPage.properties.Skill?.type === 'multi_select'
+          ? typedPage.properties.Skill.multi_select.map(item => item.name)
+          : [],
+      CreateDate:
+        typedPage.properties.CreateDate?.type === 'date'
+          ? (typedPage.properties.CreateDate.date?.start ?? '')
+          : '',
+      SmallDescription:
+        typedPage.properties.SmallDescription?.type === 'rich_text'
+          ? (typedPage.properties.SmallDescription.rich_text[0]?.plain_text ?? '')
+          : '',
+    };
+  });
 }

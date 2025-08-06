@@ -1,4 +1,5 @@
 'use client';
+import Loading from '@/app/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 
@@ -19,7 +20,7 @@ export default function DetailPostList() {
     enabled: !!PostId,
   });
 
-  if (isLoading) return <p>로딩 중...</p>;
+  if (isLoading) return <Loading />;
   if (error || !post) return <p>에러 발생 또는 게시글 없음</p>;
 
   return <></>;
