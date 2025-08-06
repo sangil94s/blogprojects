@@ -15,7 +15,7 @@ export async function getAllPosts(): Promise<BlogAllPostType[]> {
   });
 
   return res.results.map((page: any) => ({
-    postId: page.id,
+    postId: page.properties.postId.number,
     PostTitle: page.properties.PostTitle.title[0]?.plain_text || '제목 없음',
     Category: page.properties.Category.multi_select?.map((categorys: any) => categorys.name) || [],
     Skills: page.properties.Skill.multi_select?.map((techskills: any) => techskills.name) || [],
