@@ -14,7 +14,7 @@
 
 ### Tech Skill
 
-- Next.js App Router, Typescript, TailwindCSS, @notionhq/client, 
+- Next.js App Router, Typescript, TailwindCSS, @notionhq/client,
 
 ---
 
