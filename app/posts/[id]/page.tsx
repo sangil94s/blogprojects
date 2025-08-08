@@ -4,8 +4,7 @@ import DetailPostList from '@/components/Post/Detail/DetailPostList';
 
 export default function page() {
   return (
-    <div className="m-auto my-4 min-h-screen w-11/12 rounded-lg bg-white">
-      <h1>상세 페이지 초안입니다.</h1>
+    <div className="m-auto my-4 min-h-screen w-10/12 rounded-lg bg-white">
       <DetailPostList />
     </div>
   );
