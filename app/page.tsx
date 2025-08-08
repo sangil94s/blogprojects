@@ -11,16 +11,15 @@ export default async function Home() {
     <div className="m-auto my-4 min-h-screen w-11/12 rounded-lg bg-white">
       <h1 className="text-center text-xl font-bold text-red-600">검색, 필터 추후 시도 예정</h1>
       <AllPostListCount count={posts?.length} />
-      <div className="mx-auto max-w-6xl px-4 lg:px-6">
-        <div className="flex flex-col gap-4 lg:flex-row">
-          <div className="w-full lg:flex-[2]">
-            <PostList posts={posts} />
-          </div>
+      <div className="flex flex-col gap-4 lg:flex-row">
+        <div className="w-full lg:basis-[80%]">
+          <PostList posts={posts} />
         </div>
-        <aside className="m-1 w-full lg:sticky lg:top-24 lg:max-w-sm lg:flex-[1]">
+        <aside className="m-1 w-full lg:sticky lg:top-24 lg:max-w-sm lg:basis-[15%]">
           <PostCategoryList />
         </aside>
       </div>
+
       {/* 추후 수정 예정 */}
     </div>
   );

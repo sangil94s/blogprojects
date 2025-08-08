@@ -4,10 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 export default function PostCategoryList() {
   return (
-    <aside className="space-y-6">
+    <aside className="space-y-2">
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">카테고리</CardTitle>
+          <CardTitle className="text-lg">카테고리-필터</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-2">

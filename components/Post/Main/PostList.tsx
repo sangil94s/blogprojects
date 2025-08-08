@@ -12,13 +12,13 @@ interface PostTypes {
 
 export default async function PostList({ posts }: PostTypes) {
   return (
-    <div className="flex flex-col justify-center gap-1">
+    <div className="w-full space-y-4">
       {posts?.length > 0 ? (
         posts?.map(item => (
           <Link key={item.postId} href={`/posts/${item.postId}`}>
             <Card
               key={item.postId}
-              className="m-auto w-11/12 bg-slate-100 transition-shadow hover:shadow-lg"
+              className="m-auto w-full bg-slate-100 transition-shadow hover:shadow-lg"
             >
               <CardHeader>
                 <div className="m-1 flex items-center justify-between">
