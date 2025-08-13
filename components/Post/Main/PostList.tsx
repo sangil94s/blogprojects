@@ -18,7 +18,7 @@ export default async function PostList({ posts }: PostTypes) {
           <Link key={item.postId} href={`/posts/${item.postId}`}>
             <Card
               key={item.postId}
-              className="m-auto w-full bg-white transition-shadow hover:bg-slate-100 hover:shadow-lg"
+              className="m-auto my-1 w-full bg-white transition-shadow hover:bg-slate-100 hover:shadow-lg"
             >
               <CardHeader>
                 <div className="m-1 flex items-center justify-between">
