@@ -1,26 +1,6 @@
 import DetailPostList from '@/components/Post/Detail/DetailPostList';
-import { getDetailPostById } from '@/components/util/DetailPost';
-import { Metadata } from 'next';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-  const { id } = await params;
-  const post = await getDetailPostById(Number(id));
-
-  if (!post) {
-    return {
-      title: '게시글을 찾을 수 없습니다',
-    };
-  }
-
-  return {
-    title: post.title,
-    description: post.desc,
-  };
-}
+// 아마도 여기는 글 상세 페이지 역할
 
 export default function page() {
   return (

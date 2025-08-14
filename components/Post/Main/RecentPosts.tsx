@@ -2,7 +2,7 @@ import { getAllPosts } from '@/components/util/getAllPost';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import { X } from 'lucide-react';
+import Nodata from '@/components/Layout/Nodata';
 
 export default async function RecentPosts() {
   const posts = await getAllPosts();
@@ -17,10 +17,7 @@ export default async function RecentPosts() {
           <CardTitle className="text-lg font-bold">최근 업로드된 글</CardTitle>
         </CardHeader>
         {recentPosts.length === 0 ? (
-          <div className="flex flex-row items-center justify-center">
-            <X className="text-red-600" />
-            <h1 className="px-2 text-center text-xl font-bold text-red-600">최근 작성 글 없음</h1>
-          </div>
+          <Nodata />
         ) : (
           <CardContent>
             <ul className="space-y-1">
