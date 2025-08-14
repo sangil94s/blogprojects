@@ -25,6 +25,8 @@ export default function DetailPostList() {
   if (isLoading) return <Loading />;
   if (error || !post) return <p>에러 발생 또는 게시글 없음</p>;
 
+  console.log(post);
+
   return (
     <>
       <div className="min-h-screen">
@@ -50,10 +52,9 @@ export default function DetailPostList() {
                 </div>
               </div>
             </div>
-            <div className="relative aspect-video overflow-hidden rounded-lg"></div>
 
-            <div className="prose prose-gray dark:prose-invert max-w-none">
-              {/* <p>{post?.markdown}</p> */}
+            <div>
+              <p>{post?.markdown.parent}</p>
 
               {/* <blockquote>
                 추후 사용 가능성

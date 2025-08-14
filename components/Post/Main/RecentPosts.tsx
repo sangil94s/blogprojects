@@ -1,5 +1,5 @@
 import { getAllPosts } from '@/components/util/getAllPost';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
@@ -10,7 +10,7 @@ export default async function RecentPosts() {
   );
 
   return (
-    <aside className="my-2 space-y-2">
+    <aside className="my-2 space-y-2 m-auto w-11/12 lg:w-full">
       <Card>
         <CardHeader>
           <CardTitle className="text-lg font-bold">최근 업로드된 글</CardTitle>
