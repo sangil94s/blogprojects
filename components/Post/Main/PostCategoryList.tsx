@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function PostCategoryList() {
   return (
-    <aside className="space-y-2 m-auto w-11/12 lg:w-full">
+    <aside className="m-auto w-11/12 space-y-2 lg:w-full">
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">카테고리</CardTitle>

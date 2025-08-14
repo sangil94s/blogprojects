@@ -14,7 +14,9 @@ export default async function Home() {
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="w-full lg:basis-[80%]">
           <PostList posts={posts} />
-          <h1 className='text-center text-xl font-bold text-red-600 my-2'>추후 더보기 버튼 or 컴포넌트 배치 지역</h1>
+          <h1 className="my-2 text-center text-xl font-bold text-red-600">
+            추후 더보기 버튼 or 컴포넌트 배치 지역
+          </h1>
         </div>
         <aside className="m-1 w-full lg:sticky lg:top-24 lg:max-w-sm lg:basis-[15%]">
           <PostCategoryList />
