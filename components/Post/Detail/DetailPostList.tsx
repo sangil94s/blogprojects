@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { Calendar } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 export default function DetailPostList() {
   const params = useParams();
@@ -53,8 +54,8 @@ export default function DetailPostList() {
               </div>
             </div>
 
-            <div>
-              <p>{post?.markdown.parent}</p>
+            <div className="prose dark:prose-invert max-w-none">
+              <ReactMarkdown>{post?.markdown.parent}</ReactMarkdown>
 
               {/* <blockquote>
                 추후 사용 가능성
