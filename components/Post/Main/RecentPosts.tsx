@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import Nodata from '@/components/Layout/Nodata';
+import { Calendar } from 'lucide-react';
 
 export default async function RecentPosts() {
   const posts = await getAllPosts();
@@ -24,8 +25,11 @@ export default async function RecentPosts() {
               {recentPosts.map(post => (
                 <Link key={post.postId} href={`/posts/${post.postId}`}>
                   <li key={post.postId}>
-                    <p className="font-semibold">{post.PostTitle}</p>
-                    <p className="text-sm text-gray-500">{post.CreateDate}</p>
+                    <p className="py-2 font-semibold">{post.PostTitle}</p>
+                    <div className="flex flex-row justify-start">
+                      <Calendar className="mx-2 h-4 w-4" />
+                      <p className="text-sm text-gray-500"> {post.CreateDate}</p>
+                    </div>
                   </li>
                 </Link>
               ))}
