@@ -1,16 +1,12 @@
 // 아마도 전체 글 리스트를 보여주는 목적
 import Nodata from '@/components/Layout/Nodata';
 import Link from 'next/link';
-import { BlogAllPostType } from '@/types/Infomation';
+import { PostTypes } from '@/types/Infomation';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, Tag } from 'lucide-react';
 
-interface PostTypes {
-  posts: BlogAllPostType[];
-}
-
-export default async function PostList({ posts }: PostTypes) {
+export default function PostList({ posts }: PostTypes) {
   return (
     <div className="mx-2 w-full space-y-4">
       {posts?.length > 0 ? (
@@ -61,7 +57,6 @@ export default async function PostList({ posts }: PostTypes) {
       ) : (
         <Nodata />
       )}
-      {/* 추후 더보기 or 페이지네이션 or 무한스크롤 배치 예정 */}
     </div>
   );
 }

@@ -8,3 +8,18 @@ export interface BlogAllPostType {
   CreateDate: string;
   SmallDescription: string;
 }
+
+export interface PostTypes {
+  posts: BlogAllPostType[];
+}
+
+export interface CountType {
+  count: number;
+}
+
+export interface MorePostsClientProps {
+  initialPosts: BlogAllPostType[];
+  nextPageToken: string | null;
+  hasMorePages: boolean;
+  pageSize?: number;
+}
