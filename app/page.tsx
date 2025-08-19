@@ -1,5 +1,4 @@
 import AllPostListCount from '@/components/Post/Main/AllPostListCount';
-import PostCategoryList from '@/components/Post/Main/PostCategoryList';
 import MorePostsClient from '@/components/Post/Main/MorePostsClient';
 import RecentPosts from '@/components/Post/Main/RecentPosts';
 
@@ -21,7 +20,6 @@ export default async function Home() {
           />
         </div>
         <aside className="m-1 w-full lg:sticky lg:top-24 lg:max-w-sm lg:basis-[15%]">
-          <PostCategoryList />
           <RecentPosts />
         </aside>
       </div>
