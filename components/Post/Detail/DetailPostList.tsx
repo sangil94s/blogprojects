@@ -2,13 +2,14 @@
 import Loading from '@/app/Loading';
 import { Badge } from '@/components/ui/badge';
 import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Calendar, Link } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 export default function DetailPostList() {
   const params = useParams();
   const PostId = Number(params.id);
+  const router = useRouter();
 
   const handleCopyLink = () => {
     try {
@@ -34,6 +35,38 @@ export default function DetailPostList() {
     },
     enabled: !!PostId,
   });
+
+  const {
+    data: allPosts,
+    isLoading: isLoadingAll,
+  } = useQuery({
+    queryKey: ['allPosts'],
+    queryFn: async () => {
+      const res = await fetch('/api/posts/all');
+      if (!res.ok) throw new Error('전체 글 호출 실패');
+      return res.json() as Promise<Array<{ postId: number }>>;
+    },
+  });
+
+  const handlePrevPost = () => {
+    if (!allPosts || !Array.isArray(allPosts)) return alert('이전 글을 찾을 수 없어요.');
+    const currentIndex = allPosts.findIndex((p: { postId: number }) => p.postId === PostId);
+    if (currentIndex === -1) return alert('이전 글을 찾을 수 없어요.');
+    const prevIndex = currentIndex - 1;
+    if (prevIndex < 0) return alert('이전 글이 없어요.');
+    const targetId = allPosts[prevIndex].postId;
+    router.push(`/posts/${targetId}`);
+  };
+
+  const handleNextPost = () => {
+    if (!allPosts || !Array.isArray(allPosts)) return alert('다음 글을 찾을 수 없어요.');
+    const currentIndex = allPosts.findIndex((p: { postId: number }) => p.postId === PostId);
+    if (currentIndex === -1) return alert('다음 글을 찾을 수 없어요.');
+    const nextIndex = currentIndex + 1; 
+    if (nextIndex >= allPosts.length) return alert('지금 글이 마지막입니다.');
+    const targetId = allPosts[nextIndex].postId;
+    router.push(`/posts/${targetId}`);
+  };
 
   if (isLoading) return <Loading />;
   if (error || !post) return <p>에러 발생 또는 게시글 없음</p>;
@@ -76,8 +109,12 @@ export default function DetailPostList() {
         </div>
       </div>
       <div className="flex flex-row items-center justify-center gap-4">
-        <h1 className="cursor-pointer p-4 font-bold">이전 글</h1>
-        <h1 className="cursor-pointer p-4 font-bold">다음 글</h1>
+        <h1 className="cursor-pointer p-4 font-bold" onClick={handlePrevPost}>
+          이전 글
+        </h1>
+        <h1 className="cursor-pointer p-4 font-bold" onClick={handleNextPost}>
+          다음 글
+        </h1>
       </div>
     </>
   );
