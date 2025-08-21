@@ -36,10 +36,7 @@ export default function DetailPostList() {
     enabled: !!PostId,
   });
 
-  const {
-    data: allPosts,
-    isLoading: isLoadingAll,
-  } = useQuery({
+  const { data: allPosts, isLoading: isLoadingAll } = useQuery({
     queryKey: ['allPosts'],
     queryFn: async () => {
       const res = await fetch('/api/posts/all');
@@ -62,7 +59,7 @@ export default function DetailPostList() {
     if (!allPosts || !Array.isArray(allPosts)) return alert('다음 글을 찾을 수 없어요.');
     const currentIndex = allPosts.findIndex((p: { postId: number }) => p.postId === PostId);
     if (currentIndex === -1) return alert('다음 글을 찾을 수 없어요.');
-    const nextIndex = currentIndex + 1; 
+    const nextIndex = currentIndex + 1;
     if (nextIndex >= allPosts.length) return alert('지금 글이 마지막입니다.');
     const targetId = allPosts[nextIndex].postId;
     router.push(`/posts/${targetId}`);

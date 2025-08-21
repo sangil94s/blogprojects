@@ -55,7 +55,10 @@ export default function PostList({ posts }: PostTypes) {
           </Link>
         ))
       ) : (
-        <Nodata />
+        <div className="flex flex-col items-center justify-center py-8">
+          <Nodata />
+          <p className="text-muted-foreground mt-4">선택한 카테고리에 해당하는 글이 없습니다.</p>
+        </div>
       )}
     </div>
   );

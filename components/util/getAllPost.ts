@@ -1,5 +1,5 @@
 import { notion } from './Notion';
-import { BlogAllPostType } from '@/types/Infomation';
+import type { BlogAllPostType, CategoryFilter } from '@/types/Infomation';
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export async function getAllPosts(): Promise<BlogAllPostType[]> {
@@ -43,6 +43,18 @@ export async function getAllPosts(): Promise<BlogAllPostType[]> {
           : '',
     };
   });
+}
+
+// Category 기준으로 필터링하는 함수
+export function filterPostsByCategory(
+  posts: BlogAllPostType[],
+  category: CategoryFilter,
+): BlogAllPostType[] {
+  if (category === '전체') {
+    return posts;
+  }
+
+  return posts.filter(post => post.Category.some(cat => cat === category));
 }
 
 export async function getPostsPage(params: {

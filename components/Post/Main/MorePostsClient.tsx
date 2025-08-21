@@ -1,10 +1,16 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import PostList from './PostList';
+import CategoryFilter from './CategoryFilter';
 import { Button } from '@/components/ui/button';
-import { BlogAllPostType, MorePostsClientProps } from '@/types/Infomation';
+import type {
+  BlogAllPostType,
+  MorePostsClientProps,
+  CategoryFilter as CategoryFilterType,
+} from '@/types/Infomation';
 import { ChevronDown } from 'lucide-react';
+import { filterPostsByCategory } from '@/components/util/getAllPost';
 
 export default function MorePostsClient({
   initialPosts,
@@ -16,6 +22,16 @@ export default function MorePostsClient({
   const [cursor, setCursor] = useState<string | null>(nextPageToken);
   const [hasMore, setHasMore] = useState<boolean>(hasMorePages);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilterType>('전체');
+
+  // 필터링된 포스트 계산
+  const filteredPosts = useMemo(() => {
+    return filterPostsByCategory(posts, selectedCategory);
+  }, [posts, selectedCategory]);
+
+  const handleCategoryChange = (category: CategoryFilterType) => {
+    setSelectedCategory(category);
+  };
 
   const handleLoadMore = useCallback(async () => {
     if (!hasMore) {
@@ -60,7 +76,12 @@ export default function MorePostsClient({
 
   return (
     <div className="w-full">
-      <PostList posts={posts} />
+      <CategoryFilter
+        selectedCategory={selectedCategory}
+        onCategoryChange={handleCategoryChange}
+        posts={posts}
+      />
+      <PostList posts={filteredPosts} />
       <div className="flex justify-center">
         <Button
           className="w-6/12 cursor-pointer"
