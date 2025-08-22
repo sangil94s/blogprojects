@@ -25,7 +25,7 @@
     "next": "15.4.5",
     "notion-to-md": "^3.1.9",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react-dom": "19.1.1",
     "react-hook-form": "^7.62.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
