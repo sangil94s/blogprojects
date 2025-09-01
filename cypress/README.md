@@ -5,12 +5,14 @@
 ## 설치된 테스트
 
 ### Footer 컴포넌트 테스트
+
 - `cypress/e2e/footer.cy.ts`: Footer 컴포넌트의 상세한 테스트
 - `cypress/e2e/footer-simple.cy.ts`: Footer 컴포넌트의 기본 테스트
 
 ## 테스트 실행 방법
 
 ### 1. 개발 서버 시작
+
 ```bash
 npm run dev
 ```
@@ -18,16 +20,19 @@ npm run dev
 ### 2. Cypress 테스트 실행
 
 #### 모든 테스트 실행
+
 ```bash
 npm run cypress:run
 ```
 
 #### 특정 Footer 테스트만 실행
+
 ```bash
 npm run test:e2e
 ```
 
 #### Cypress UI 모드로 실행
+
 ```bash
 npm run cypress:open
 ```
@@ -35,6 +40,7 @@ npm run cypress:open
 ## 테스트 내용
 
 ### Footer 컴포넌트 테스트 (`footer.cy.ts`)
+
 - Footer가 올바르게 렌더링되는지 확인
 - Footer 텍스트가 "본 프로젝트는 학습 목적입니다."인지 확인
 - CSS 클래스가 올바르게 적용되었는지 확인
@@ -42,6 +48,7 @@ npm run cypress:open
 - 다른 페이지 요소와 겹치지 않는지 확인
 
 ### 간단한 Footer 테스트 (`footer-simple.cy.ts`)
+
 - Footer가 존재하는지 확인
 - Footer 텍스트가 올바른지 확인
 
@@ -52,14 +59,14 @@ npm run cypress:open
 ```typescript
 describe('Component Name', () => {
   beforeEach(() => {
-    cy.visit('/')
-  })
+    cy.visit('/');
+  });
 
   it('should display component correctly', () => {
-    cy.get('selector').should('exist')
-    cy.get('selector').should('contain.text', 'expected text')
-  })
-})
+    cy.get('selector').should('exist');
+    cy.get('selector').should('contain.text', 'expected text');
+  });
+});
 ```
 
 ## 주의사항
