@@ -3,7 +3,7 @@ import Loading from '@/app/Loading';
 import { Badge } from '@/components/ui/badge';
 import { useQuery } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
-import { Calendar, Link } from 'lucide-react';
+import { Calendar, Link, MoveLeft, MoveRight } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 export default function DetailPostList() {
@@ -106,11 +106,13 @@ export default function DetailPostList() {
         </div>
       </div>
       <div className="flex flex-row items-center justify-center gap-4">
-        <h1 className="cursor-pointer p-4 font-bold" onClick={handlePrevPost}>
+        <h1 className="flex cursor-pointer items-center p-4 font-bold" onClick={handlePrevPost}>
+          <MoveLeft className="mr-2 h-4 w-4" />
           이전 글
         </h1>
-        <h1 className="cursor-pointer p-4 font-bold" onClick={handleNextPost}>
+        <h1 className="flex cursor-pointer items-center p-4 font-bold" onClick={handleNextPost}>
           다음 글
+          <MoveRight className="ml-2 h-4 w-4" />
         </h1>
       </div>
     </>

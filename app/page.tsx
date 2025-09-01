@@ -5,7 +5,7 @@ import RecentPosts from '@/components/Post/Main/RecentPosts';
 import { getAllPosts, getPostsPage } from '@/components/util/getAllPost';
 
 export default async function Home() {
-  const initial = await getPostsPage({ pageSize: 1 });
+  const initial = await getPostsPage({ pageSize: 10 });
 
   return (
     <div className="m-auto my-4 min-h-screen w-11/12 rounded-lg bg-white">
