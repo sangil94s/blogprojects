@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Nodata from '@/components/Layout/Nodata';
 import { Calendar } from 'lucide-react';
 
+export const revalidate = 0;
+
 export default async function RecentPosts() {
   const posts = await getAllPosts();
   const recentPosts = posts.filter(post =>
@@ -25,7 +27,11 @@ export default async function RecentPosts() {
               {recentPosts.map(post => (
                 <Link key={post.postId} href={`/posts/${post.postId}`}>
                   <li key={post.postId}>
-                    <p className="py-2 font-semibold">{post.PostTitle}</p>
+                    <p className="py-2 font-semibold">
+                      {post.PostTitle.length > 8
+                        ? `${post.PostTitle.substring(0, 8)}...`
+                        : post.PostTitle}
+                    </p>
                     <div className="flex flex-row justify-start">
                       <Calendar className="mx-2 h-4 w-4" />
                       <p className="text-sm text-gray-500"> {post.CreateDate}</p>

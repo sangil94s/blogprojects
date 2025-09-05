@@ -42,11 +42,16 @@ export default function PostList({ posts }: PostTypes) {
                   <div className="flex items-end space-x-2">
                     <Tag className="text-muted-foreground my-1 h-4 w-4" />
                     <div className="flex space-x-1">
-                      {item.Skills.map(SkillTag => (
+                      {item.Skills.slice(0, 2).map(SkillTag => (
                         <Badge key={SkillTag} variant="outline" className="text-xs">
                           {SkillTag}
                         </Badge>
                       ))}
+                      {item.Skills.length > 2 && (
+                        <Badge variant="outline" className="text-xs">
+                          ...
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 </div>
