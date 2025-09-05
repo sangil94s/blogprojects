@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Nodata from '@/components/Layout/Nodata';
 import { Calendar } from 'lucide-react';
 
+export const revalidate = 0;
+
 export default async function RecentPosts() {
   const posts = await getAllPosts();
   const recentPosts = posts.filter(post =>

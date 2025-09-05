@@ -4,6 +4,8 @@ import RecentPosts from '@/components/Post/Main/RecentPosts';
 
 import { getAllPosts, getPostsPage } from '@/components/util/getAllPost';
 
+export const revalidate = 0;
+
 export default async function Home() {
   const initial = await getPostsPage({ pageSize: 10 });
 

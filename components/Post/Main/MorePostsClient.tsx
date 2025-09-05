@@ -45,7 +45,7 @@ export default function MorePostsClient({
       url.searchParams.set('pageSize', String(pageSize));
       if (cursor) url.searchParams.set('cursor', cursor);
 
-      const res = await fetch(url.toString(), { cache: 'no-store' });
+      const res = await fetch(url.toString());
       if (!res.ok) throw new Error('failed to fetch');
       const data: {
         posts: BlogAllPostType[];
