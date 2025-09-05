@@ -66,7 +66,8 @@ export default function DetailPostList() {
   };
 
   if (isLoading) return <Loading />;
-  if (error || !post) return <p>에러 발생 또는 게시글 없음</p>;
+  if (error || !post)
+    return <p className="text-center font-bold text-red-600">에러 발생 또는 게시글 없음</p>;
 
   return (
     <>
