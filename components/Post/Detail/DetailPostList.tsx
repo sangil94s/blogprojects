@@ -68,7 +68,7 @@ export default function DetailPostList() {
   if (isLoading) return <Loading />;
   if (error || !post)
     return <p className="text-center font-bold text-red-600">에러 발생 또는 게시글 없음</p>;
-
+  console.log(post);
   return (
     <>
       <div className="min-h-screen">
@@ -76,13 +76,15 @@ export default function DetailPostList() {
           <article className="space-y-8">
             {post?.category.map((itemX: string, idx: number) => (
               <div className="flex items-center space-x-2" key={idx}>
-                <Badge variant="secondary">{itemX}</Badge>
+                <Badge variant="secondary" className="font-bold">
+                  {itemX}
+                </Badge>
               </div>
             ))}
 
             <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">{post?.title}</h1>
 
-            <p className="text-xl">{post?.desc}</p>
+            <p className="text-xl font-bold text-slate-400">{post?.desc}</p>
 
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="text-muted-foreground flex items-center space-x-4 text-sm">
@@ -96,6 +98,15 @@ export default function DetailPostList() {
                 >
                   <Link className="h-4 w-4" />
                   <span>링크 복사</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  {post?.skills.map((itemX: string, idx: number) => (
+                    <div className="flex items-center space-x-2" key={idx}>
+                      <Badge variant="secondary" className="font-bold">
+                        {itemX}
+                      </Badge>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
