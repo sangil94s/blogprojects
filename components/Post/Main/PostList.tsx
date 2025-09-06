@@ -33,9 +33,7 @@ export default function PostList({ posts }: PostTypes) {
                 <CardTitle className="hover:text-primary mx-2 cursor-pointer text-xl">
                   {item.PostTitle}
                 </CardTitle>
-                <CardDescription className="mx-2 text-base leading-relaxed">
-                  {item.SmallDescription}
-                </CardDescription>
+                <CardDescription className="m-2 text-base">{item.SmallDescription}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex justify-end">

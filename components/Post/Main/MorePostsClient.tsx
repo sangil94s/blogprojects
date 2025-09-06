@@ -84,14 +84,14 @@ export default function MorePostsClient({
       <PostList posts={filteredPosts} />
       <div className="flex justify-center">
         <Button
-          className="w-6/12 cursor-pointer"
+          className="w-6/12 cursor-pointer font-bold"
           variant="outline"
           size="lg"
           onClick={handleLoadMore}
-          disabled={isLoading}
+          disabled={isLoading || !hasMore}
         >
           <ChevronDown />
-          {isLoading ? '불러오는 중...' : '더보기'}
+          {isLoading ? '불러오는 중...' : hasMore ? '더보기' : '마지막 글입니다'}
         </Button>
       </div>
     </div>

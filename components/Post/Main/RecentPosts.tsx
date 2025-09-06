@@ -17,7 +17,7 @@ export default async function RecentPosts() {
     <aside className="m-auto my-2 w-11/12 space-y-2 lg:w-full">
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg font-bold">최근 업로드된 글</CardTitle>
+          <CardTitle className="text-lg font-bold">최근 업로드 글</CardTitle>
         </CardHeader>
         {recentPosts.length === 0 ? (
           <Nodata />
@@ -27,7 +27,7 @@ export default async function RecentPosts() {
               {recentPosts.map(post => (
                 <Link key={post.postId} href={`/posts/${post.postId}`}>
                   <li key={post.postId}>
-                    <p className="py-2 font-semibold">
+                    <p className="font-semibold">
                       {post.PostTitle.length > 8
                         ? `${post.PostTitle.substring(0, 8)}...`
                         : post.PostTitle}
